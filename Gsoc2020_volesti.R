@@ -22,6 +22,7 @@ f4 <- function(x) { f(x,10)}
 # 11th is too long (more than 10 minutes)
 for (n in 1:10){
     cat("n =", n)
+    # cubintegrate and hcubature give approximately same results but cubintegrate is slower.
     #print(cubintegrate(f1, rep(-1,n), rep(1,n), 1, "hcubature")[1])
     print(hcubature(f1, rep(-1,n), rep(1,n),tol=1e-5)[1]) 
 }
@@ -30,7 +31,6 @@ for (n in 1:10){
 # # 8th is too long (more than 10 minutes)
 for (n in 1:10){
     cat("n =", n)
-    #print(cubintegrate(f2, rep(-1,n), rep(1,n), 1, "hcubature")[1])
     print(hcubature(f2, rep(-1,n), rep(1,n),tol=1e-5)[1]) 
 }
 
@@ -38,16 +38,14 @@ for (n in 1:10){
 # # 7th is too long (more than 10 minutes)
 for (n in 1:6){
     cat("n =", n)
-    # print(cubintegrate(f3, rep(-1,n), rep(1,n), 1, "hcubature")[1])
-    print(hcubature(f3, rep(-1,n), rep(1,n),tol=1e-5)[1]) 
+    print(hcubature(f3, rep(-1,n), rep(1,n),tol=1e-5)[1])
 }
 
 # # for a = 1(f2), we are able to complete 4 iterations,
 # # 5th is too long (more than 10 minutes)
 for (n in 1:5){
     cat("n =", n)
-    # print(cubintegrate(f4, rep(-1,n), rep(1,n), 1, "hcubature")[1])
-    print(hcubature(f4, rep(-1,n), rep(1,n),tol=1e-5)[1]) 
+    print(hcubature(f4, rep(-1,n), rep(1,n),tol=1e-5)[1])
 }
 
 
@@ -56,7 +54,7 @@ for (n in 1:5){
 
 cube = GenCube(3,'H')
 vol = volume(cube)
-# from source :https://github.com/phoenixrao885/gsoc-monte-carlo-solutions/blob/master/integrals%20using%20volesti
+
 mat50points = sample_points(cube,
                         N=50,
                         WalkType = 'BW',
